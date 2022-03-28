@@ -17,3 +17,6 @@ app.get('/', (req, res) => {
 const exphbs = require('express-handlebars')
 app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+
+//建立public連結
+app.use(express.static('public'))

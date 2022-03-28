@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant_List</title>
+  {{!-- 加入bootstrap --}}
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  {{!-- 加入自己的css --}}
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <link rel="stylesheet" href="/stylesheets/show.css">
 </head>
 
 <body>
+  {{!-- 因為此Css需使用bootstrap 4.3.1才不會有問題，而bootstaps5以下需要加入jquery --}}
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+lbbVYUew+OrCXaRKfj"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/popper.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+
   {{{ body }}}
 </body>
 
