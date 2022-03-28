@@ -10,7 +10,7 @@ app.listen(port, (req, res) => {
 
 //設定路由
 app.get('/', (req, res) => {
-  res.render('index', {restaurants: restaurantList.results})
+  res.render('index', { restaurants: restaurantList.results })
 })
 
 //設定handlebars 路由
@@ -23,3 +23,10 @@ app.use(express.static('public'))
 
 //導入外部json file
 const restaurantList = require('./restaurant.json')
+
+//設定show 動態路由
+app.get('/restaurants/:restaurant_id', (req, res) => {
+  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
+  res.render('show', { restaurant: restaurant })
+})
+
