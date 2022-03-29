@@ -30,3 +30,12 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
   res.render('show', { restaurant: restaurant })
 })
 
+//設定搜尋列 (name, category)
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurants = restaurantList.results.filter(restaurant => {
+    return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+  })
+  res.render('index', { restaurants, keyword })
+})
+
