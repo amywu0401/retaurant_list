@@ -3,6 +3,21 @@ const express = require('express')
 const port = 3000
 const app = express()
 
+
+//建立mongoose連線 並檢查狀態
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODB_URI)
+
+const db = mongoose.connection
+db.on('error', () =>{
+  console.log('mongodb error!')
+})
+
+db.once('open', () =>{
+  console.log('mongodb connected!')
+})
+
+
 //設立監聽器
 app.listen(port, (req, res) => {
   console.log(`App is running on http://localhost:${port}`)
