@@ -8,6 +8,9 @@ const app = express()
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI)
 
+// 設定環境變數
+// set "MONGODB_URI=mongodb+srv://alpha:camp@cluster0.mjpff.mongodb.net/restaurant?retryWrites=true&w=majority"
+
 const db = mongoose.connection
 db.on('error', () =>{
   console.log('mongodb error!')

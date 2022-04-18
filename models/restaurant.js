@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const restaurantSchems = new Schema({
+const restaurantSchema = new Schema({
   "id": { type: String, required: true },
   "name": { type: String, required: true },
   "name_en": { type: String, required: true },
