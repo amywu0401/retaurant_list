@@ -72,3 +72,8 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants, keyword })
 })
 
+
+//設定new 畫面路由
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
