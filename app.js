@@ -2,6 +2,7 @@
 const express = require('express')
 const port = 3000
 const app = express()
+const Restaurant = require('./models/restaurant')
 
 
 //建立mongoose連線 並檢查狀態
@@ -12,11 +13,11 @@ mongoose.connect(process.env.MONGODB_URI)
 // set "MONGODB_URI=mongodb+srv://alpha:camp@cluster0.mjpff.mongodb.net/restaurant?retryWrites=true&w=majority"
 
 const db = mongoose.connection
-db.on('error', () =>{
+db.on('error', () => {
   console.log('mongodb error!')
 })
 
-db.once('open', () =>{
+db.once('open', () => {
   console.log('mongodb connected!')
 })
 
@@ -27,9 +28,21 @@ app.listen(port, (req, res) => {
 })
 
 //設定路由
+// app.get('/', (req, res) => {
+//   res.render('index', { restaurants: restaurantList.results })
+// })
+
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
+
 })
+
+
+
+
 
 //設定handlebars 路由
 const exphbs = require('express-handlebars')
